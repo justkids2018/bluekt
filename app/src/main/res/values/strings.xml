@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AndroidKotlinDemo</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!--main_bottom-->
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">内容</string>
+    <string name="title_me">我的</string>
+
+
+    <!--main-->
+    <string name="main_webview_url">webview</string>
+
+
+    <!--login-->
+    <string name="blues_login_name">输入名字</string>
+    <string name="blues_login_pwd">输入密码</string>
+</resources>
