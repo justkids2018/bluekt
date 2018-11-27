@@ -16,16 +16,15 @@ import java.util.ArrayList
  * Created qisd on 2017/8/16.
  */
 class MiddleTabFragment : BluesBaseFragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater?.inflate(R.layout.blues_middle_fragment_tab, container, false)
         return view
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListView()
     }
