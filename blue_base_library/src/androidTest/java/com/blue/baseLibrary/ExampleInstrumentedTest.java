@@ -1,4 +1,4 @@
-package com.blue.audioLibrary;
+package com.blue.baseLibrary;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.blue.audioLibrary.test", appContext.getPackageName());
+        assertEquals("com.blue.baseLibrary.test", appContext.getPackageName());
     }
 }

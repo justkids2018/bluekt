@@ -1,6 +1,6 @@
 package com.kotlin.blues.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,17 +14,28 @@ import kotlinx.android.synthetic.main.blues_middle_list_item.view.*
  */
 class BluesMidMainAdapter(var bluesItems: List<String>) : RecyclerView.Adapter<BluesMidMainAdapter.MyViewHolder>() {
 
-    var inter: MyOnItemClickListener? = null;
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         var view = LayoutInflater.from(parent?.context).inflate(R.layout.blues_middle_list_item, parent, false)
         return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder?.testName!!.text = bluesItems.get(position)
         holder?.testName.setOnClickListener({ inter?.itemClick(position) })
-
     }
+
+    var inter: MyOnItemClickListener? = null
+//    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyViewHolder {
+//        var view = LayoutInflater.from(parent?.context).inflate(R.layout.blues_middle_list_item, parent, false)
+//        return MyViewHolder(view)
+//    }
+//
+//    override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
+//        holder?.testName!!.text = bluesItems.get(position)
+//        holder?.testName.setOnClickListener({ inter?.itemClick(position) })
+//
+//    }
 
     override fun getItemCount(): Int {
         return bluesItems.size

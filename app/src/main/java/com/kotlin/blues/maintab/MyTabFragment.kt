@@ -26,7 +26,10 @@ class MyTabFragment : BluesBaseFragment() {
         blue_webview.setText(R.string.main_webview_url)
         blue_webview.setOnClickListener {
             val intent = Intent()
-            intent.setClass(activity, BluesLoginActivity::class.java)
+//            intent.setClass(activity, BluesLoginActivity::class.java)
+            val pathname = BluesLoginActivity::class.java.name
+            intent.setClassName(activity, pathname)
+
             startActivity(intent)
         }
     }
