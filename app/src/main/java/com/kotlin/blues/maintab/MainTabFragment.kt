@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.kotlin.blues.R
 import com.kotlin.blues.activity.login.BluesLoginActivity
+import com.kotlin.blues.activity.web.BlueWebViewActivity
 import com.kotlin.blues.base.BluesBaseFragment
 import kotlinx.android.synthetic.main.blues_fragment_main.*
 
@@ -27,8 +28,7 @@ class MainTabFragment : BluesBaseFragment() {
         blue_webview.setText(R.string.main_webview_url)
         blue_webview.setOnClickListener {
             val intent = Intent()
-
-            intent.setClass(activity, BluesLoginActivity::class.java)
+            intent.setClass(activity, BlueWebViewActivity::class.java)
             startActivity(intent)
 
         }

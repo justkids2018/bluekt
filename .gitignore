@@ -1,0 +1,15 @@
+/.idea
+/base_audio_mix_library.iml
+/.gradle
+/android_17jzt.iml
+/gradlew
+/gradlew.bat
+/local.properties
+/build
+/gradle
+/jzt/jzt.iml
+/regist_library/build
+/regist_library/regist_library.iml
+/common_dub_library.iml
+/zxing
+.iml

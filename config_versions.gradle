@@ -1,9 +1,5 @@
 ext {
 
-    kotlin_version = '1.3.11'
-
-
-
     dependVersion = [
             androidSupportSdkVersion: "27.1.1",
             lifecycle               : "1.1.1",
