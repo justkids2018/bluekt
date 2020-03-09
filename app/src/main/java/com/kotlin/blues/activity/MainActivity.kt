@@ -1,5 +1,6 @@
 package com.kotlin.blues.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -16,6 +17,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BluesBaseActivity() {
+    override fun initIntent(intent: Intent) {
+    }
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_main
+    }
 
     var bluesFragments = listOf<BluesBaseFragment>(MainTabFragment(), MiddleTabFragment(), MyTabFragment())
     override fun onCreate(savedInstanceState: Bundle?) {

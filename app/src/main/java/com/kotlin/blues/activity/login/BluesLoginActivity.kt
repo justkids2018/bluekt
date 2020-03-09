@@ -1,5 +1,6 @@
 package com.kotlin.blues.activity.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.kotlin.blues.R
@@ -11,6 +12,12 @@ import kotlinx.android.synthetic.main.blues_login_view.*
  * Created by blues_qisd on 2018/3/6.
  */
 class BluesLoginActivity : BluesBaseActivity(), View.OnClickListener {
+    override fun getLayoutId(): Int {
+        return R.layout.blues_login_view
+    }
+
+    override fun initIntent(intent: Intent) {
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

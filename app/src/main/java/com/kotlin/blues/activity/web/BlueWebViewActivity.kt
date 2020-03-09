@@ -1,10 +1,11 @@
 package com.kotlin.blues.activity.web
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.View.LAYER_TYPE_HARDWARE
+import android.view.View.*
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -13,8 +14,16 @@ import com.kotlin.blues.base.BluesBaseActivity
 import com.kotlin.blues.R
 
 class BlueWebViewActivity : BluesBaseActivity() {
+    override fun getLayoutId(): Int {
+        return R.layout.blue_webview_view
+    }
+
+    override fun initIntent(intent: Intent) {
+    }
+
+
     companion object {
-        var url = "http://www.test.17zuoye.net/view/sample/parent"
+        var url = "https://mclient.alipay.com/cashier/mobilepay.htm?alipay_exterface_invoke_assign_target=invoke_09ca9b98ecbe2b266a05e8da4847e310&alipay_exterface_invoke_assign_sign=_kg_x66zfi_i_pv0_j_l8%2F_c8_o48_e3gr_jhm_q%2B_mi_n_k_d9%2Fhk_qq_x8i_a_jszc_jojg_a%3D%3D"
         var url1 = "http://www.baidu.com"
         val KEY_URL = "key_url"
     }
@@ -22,11 +31,11 @@ class BlueWebViewActivity : BluesBaseActivity() {
     var currentUrl = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.blue_webview_view)
+        setContentView(getLayoutId())
         if (intent != null) {
             currentUrl = intent?.getStringExtra(KEY_URL).toString()
         }
-        if (currentUrl == null || currentUrl == "") {
+        if (currentUrl == null || currentUrl == "null" || currentUrl == "") {
             currentUrl = url
         }
         Log.e("currentUrl", currentUrl)
@@ -51,23 +60,25 @@ class BlueWebViewActivity : BluesBaseActivity() {
         webSettings.useWideViewPort = true// 关键点
         webSettings.allowFileAccess = true // 允许访问文件
         webSettings.setSupportZoom(true) // 支持缩放
-        webSettings.loadWithOverviewMode = true
-        webSettings.builtInZoomControls = false
+        webSettings.loadWithOverviewMode = true// 缩放至屏幕的大小
+        webSettings.builtInZoomControls = false//设置内置的缩放控件。若为false，则该WebView不可缩放
+        webSettings.displayZoomControls = false //隐藏原生的缩放控件
         webSettings.javaScriptEnabled = true
         webSettings.cacheMode = WebSettings.LOAD_NO_CACHE // 不加载缓存内容
         webSettings.pluginState = WebSettings.PluginState.ON
         webSettings.allowFileAccessFromFileURLs = true
         webSettings.domStorageEnabled = true
+        webSettings.databaseEnabled = true;   //开启 database storage API 功能
+        webSettings.setAppCacheEnabled(true);//开启 Application Caches 功能
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         }
 //        webview.webChromeClient = MyWebChromeClient()
-        webview.setLayerType(LAYER_TYPE_HARDWARE, null)
+        webview.setLayerType(LAYER_TYPE_NONE, null)
         webview.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView, s: String): Boolean {
                 //必须重写的方法 解决了优酷 百度视频不播放视频加载失败的问题
                 return if (currentUrl.startsWith("intent") || currentUrl.startsWith("youku")) {
-
                     true
                 } else {
                     super.shouldOverrideUrlLoading(view, currentUrl)
