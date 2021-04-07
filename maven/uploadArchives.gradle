@@ -20,7 +20,6 @@ if (project.properties.'sonatypePackaging' == 'ajar') {
     sonatypePackaging = 'jar'
 }
 if (!hasProperty('sonatypeRepo')) {
-    project.ext.sonatypeRepo = 'http://maven.17zuoye.net'
     println "no [sonatypeRepo] found in gradle.properties , use default : $sonatypeRepo"
 }
 if (project.properties.'upSnapshot' == 'true') {
@@ -30,14 +29,6 @@ if (project.properties.'upSnapshot' == 'true') {
 //    sonatypeRepo += '/nexus/content/repositories/releases/'
     sonatypeRepo += '/nexus/content/repositories/thirdparty/'
 }
-if (!hasProperty('sonatypeUsername')) {
-    project.ext.sonatypeUsername = 'admin'
-    println "no [sonatypeUsername] found in gradle.properties , use default : $sonatypeUsername"
-}
-if (!hasProperty('sonatypePassword')) {
-    project.ext.sonatypePassword = 'admin123'
-    println "no [sonatypePassword] found in gradle.properties , use default : $sonatypePassword"
-}
 
 println '''
 sonatype repository url = ''' + sonatypeRepo + '''
@@ -46,12 +37,6 @@ sonatype artifactId = ''' + sonatypeArtifactId + '''
 sonatype version = ''' + sonatypeVersion + '''
 sonatype packaging = ''' + sonatypePackaging + '''
 '''
-
-//def coreAarFile = file('libs/waiyan_sdk-release-2.5.0.0406.aar')
-def coreAarFile = file('/Users/shoudongqi/Downloads/waiyan_sdk-release-2.5.0.0406.aar')
-artifacts {
-    archives coreAarFile
-}
 
 uploadArchives {
     repositories {
