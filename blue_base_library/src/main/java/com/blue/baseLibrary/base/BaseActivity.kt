@@ -1,5 +1,6 @@
 package com.blue.baseLibrary.base
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
@@ -8,10 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
  * 基础activity
  *
  */
-open class BaseActivity : AppCompatActivity() {
-
+abstract class BaseActivity : AppCompatActivity() {
+    abstract fun getLayoutId(): Int
+    abstract fun initIntent(intent: Intent)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(getLayoutId())
+        initIntent(intent)
     }
 
     override fun onDestroy() {

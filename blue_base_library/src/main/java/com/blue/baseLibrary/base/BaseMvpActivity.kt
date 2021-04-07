@@ -7,10 +7,11 @@ import com.yiqizuoye.jzt.kotlin.base.mvp.BaseMvpView
 abstract class BaseMvpActivity<in V : BaseMvpView, T : BaseMvpPresenter<V>> : BaseActivity(), BaseMvpView {
 
 
-    protected abstract var mPresenter: T
+    abstract var mPresenter: T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(getLayoutId())
         mPresenter.attachView(this as V)
     }
 

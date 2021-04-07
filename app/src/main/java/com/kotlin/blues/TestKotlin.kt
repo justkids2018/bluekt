@@ -1,10 +1,6 @@
 package com.kotlin.blues
 
 import com.kotlin.blues.util.DateUtil
-import com.kotlin.blues.util.DateUtil.DATE_FORMAT
-import com.kotlin.blues.util.DateUtil.convertTolong
-import java.text.SimpleDateFormat
-import java.util.*
 
 /**
  * Created by qishoudong on 2017/6/12.
@@ -39,10 +35,16 @@ class TestKotlin {
 
 
 //            var url="https://www.test.17zuoye.net/zion/zx-parent?homework_id=5e5e0c8f70e97fb4136bc08b&student_id=334088614#homeworkReport"
-            var url="https://www.test.17zuoye.net/zion/zx-parent?homework_id=5e5e0c8f70e97fb4136bc08b&student_id=334088614"
-
-            url=DateUtil.buildUrlDefineAddParem(url,"posid","11111")
-            println("----------$url")
+//            var url="https://www.test.17zuoye.net?student_id=334088614&full=true"
+//            var url="http://www.test.17zuoye.net?student_id=334088614&full=true"
+//            var url="1111000202"
+//            var lastIndexOf = url.lastIndexOf(".")
+//            System.out.println("full--name:"+lastIndexOf)
+//            var suffix = url.substring(lastIndexOf)
+//            System.out.println("full--name1:"+suffix)
+//            val uri = Uri.parse(url)
+//            uri.getQueryParameter("full")
+//            System.out.println("full-value-name:"+uri.getBooleanQueryParameter("full",false))
         }
 
     }

@@ -1,6 +1,7 @@
 package com.kotlin.blues.maintab
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,8 @@ class MainTabFragment : BluesBaseFragment() {
         blue_webview.setOnClickListener {
             val intent = Intent()
             intent.setClass(activity, BlueWebViewActivity::class.java)
+            var url="/yq_web?url=https%3A%2F%2Fwww.17zuoye.com%5C%2Fview%5C%2Fmobile%5C%2Fcommon%5C%2Fdownload%3Fapp_type%3D17parent%26rel%3D3&type=fairyland&orientation=landscape"
+            intent.putExtra("key_url",url)
             startActivity(intent)
 
         }

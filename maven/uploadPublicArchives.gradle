@@ -1,0 +1,73 @@
+apply plugin: 'maven-publish'
+
+if (!hasProperty('sonatypePackaging')) {
+    throw new RuntimeException('you must set sonatypePackaging in gradle.properties !!! like [jar,ajar,aar]')
+}
+
+if (!hasProperty('sonatypeGroupId')) {
+    throw new RuntimeException('you must set sonatypeGroupId in gradle.properties !!! like [com.xxx.xxx]')
+}
+
+if (!hasProperty('sonatypeArtifactId')) {
+    throw new RuntimeException('you must set sonatypeArtifactId in gradle.properties !!! like [project-name]')
+}
+
+if (!hasProperty('sonatypeVersion')) {
+    throw new RuntimeException('you must set sonatypeVersion in gradle.properties !!! like [1.0.0]')
+}
+if (project.properties.'sonatypePackaging' == 'ajar') {
+    sonatypePackaging = 'jar'
+}
+if (!hasProperty('sonatypeRepo')) {
+    project.ext.sonatypeRepo = 'http://maven.net'
+    println "no [sonatypeRepo] found in gradle.properties , use default : $sonatypeRepo"
+}
+if (project.properties.'upSnapshot' == 'true') {
+    sonatypeRepo += '/nexus/content/repositories/snapshots/'
+    sonatypeVersion = "${sonatypeVersion}-SNAPSHOT"
+} else {
+//    sonatypeRepo += '/nexus/content/repositories/releases/'
+    sonatypeRepo += '/nexus/content/repositories/thirdparty/'
+}
+if (!hasProperty('sonatypeUsername')) {
+    project.ext.sonatypeUsername = '1'
+    println "no [sonatypeUsername] found in gradle.properties , use default : $sonatypeUsername"
+}
+if (!hasProperty('sonatypePassword')) {
+    project.ext.sonatypePassword = '1'
+    println "no [sonatypePassword] found in gradle.properties , use default : $sonatypePassword"
+}
+
+println '''
+
+publish  sonatype repository url = ''' + sonatypeRepo + '''
+sonatype groupId = ''' + sonatypeGroupId + '''
+sonatype artifactId = ''' + sonatypeArtifactId + '''
+sonatype version = ''' + sonatypeVersion + '''
+publish  sonatype packaging = ''' + sonatypePackaging + '''
+publish  sonatype sonatypeUsername = ''' + sonatypeUsername + '''
+publish  sonatype sonatypePassword = ''' + sonatypePassword + '''
+
+'''
+publishing {
+
+    repositories {
+        maven {
+            credentials {
+                username sonatypeUsername
+                password sonatypePassword
+            }
+            url sonatypeRepo //maven库地址
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            artifactId sonatypeArtifactId
+//            artifact 'libs/waiyan_sdk-release-2.5.0.0406.aar'
+            artifact '/Users/shoudongqi/Downloads/waiyan_sdk-release-2.5.0.0406.aar'
+            groupId sonatypeGroupId
+            version sonatypeVersion
+        }
+    }
+}

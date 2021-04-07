@@ -547,7 +547,7 @@ public class DateUtil {
         return url;
     }
 
-    private static String buildUrlDefineAddParemInfo(String url, String key, String value) {
+    public static String buildUrlDefineAddParemInfo(String url, String key, String value) {
 
         if (isStringEmpty(url))
             return "";

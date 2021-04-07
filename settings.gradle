@@ -1,2 +1,3 @@
+include ':blue_maven_library'
 include ':app', ':blue_net_library', ':blue_image_library', ':blue_statistic_library', ':blue_base_library'
 //':blue_share_library', ':blue_push_library', ':blue_audio_library',
